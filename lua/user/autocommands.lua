@@ -10,6 +10,8 @@ vim.cmd [[
 	augroup _lsp
 		autocmd!
 		autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+		autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"ChainingHint"} }
+		" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 	augroup end
 
   augroup _git
